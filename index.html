@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eco Alerta Zacachimalpa</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-main: #fdfbf7;
+      --green-primary: #2d5a27;
+      --green-soft: #e8f5e9;
+      --green-accent: #4caf50;
+      --card-bg: #ffffff;
+      --text-main: #2c3e50;
+      --text-muted: #607d8b;
+      --border-color: #e2e8f0;
+      --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.08);
+      --radius-lg: 16px;
+      --radius-md: 12px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: var(--bg-main);
+      color: var(--text-main);
+      line-height: 1.6;
+      padding-bottom: 60px;
+    }
+
+    /* Header & Navigation */
+    header {
+      background-color: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(8px);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 1px solid var(--border-color);
+      padding: 12px 24px;
+    }
+
+    .nav-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--green-primary);
+    }
+
+    .brand-logo svg {
+      width: 42px;
+      height: 42px;
+    }
+
+    .brand-logo span {
+      font-weight: 800;
+      font-size: 1.2rem;
+      letter-spacing: -0.5px;
+    }
+
+    .nav-members {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--green-soft);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      color: var(--green-primary);
+      font-weight: 600;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-muted);
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--green-primary);
+    }
+
+    /* Container Main */
+    .container {
+      max-width: 1000px;
+      margin: 40px auto 0;
+      padding: 0 20px;
+    }
+
+    /* Section Component */
+    .section-card {
+      background: var(--card-bg);
+      border-radius: var(--radius-lg);
+      padding: 40px;
+      margin-bottom: 40px;
+      border: 1px solid var(--border-color);
+      box-shadow: var(--shadow-sm);
+      transition: box-shadow 0.3s ease;
+      scroll-margin-top: 85px;
+    }
+
+    .section-card:hover {
+      box-shadow: var(--shadow-md);
+    }
+
+    .section-badge {
+      display: inline-block;
+      background-color: var(--green-primary);
+      color: white;
+      font-size: 0.75rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 4px 12px;
+      border-radius: 12px;
+      margin-bottom: 20px;
+    }
+
+    /* SECCIÓN 1 STYLES */
+    .sec1-hero {
+      display: grid;
+      grid-template-columns: 1fr 280px;
+      gap: 32px;
+      align-items: center;
+    }
+
+    @media (max-width: 768px) {
+      .sec1-hero {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+    }
+
+    .sec1-content h1 {
+      font-size: 2.2rem;
+      color: var(--green-primary);
+      line-height: 1.2;
+      margin-bottom: 8px;
+    }
+
+    .motto {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.25rem;
+      color: #388e3c;
+      margin-bottom: 24px;
+      font-weight: 600;
+    }
+
+    .who-we-are {
+      margin-top: 32px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border-color);
+    }
+
+    .who-we-are h3 {
+      font-size: 1.1rem;
+      color: var(--green-primary);
+      margin-bottom: 8px;
+    }
+
+    .members-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .member-tag {
+      background: #f1f8e9;
+      color: #33691e;
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      border: 1px solid #c5e1a5;
+    }
+
+    /* SECCIÓN 2 STYLES */
+    .classification-block {
+      margin-bottom: 32px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .classification-block:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .classification-title {
+      font-size: 0.9rem;
+      font-weight: 800;
+      color: var(--green-primary);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .classification-title::before {
+      content: '';
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      background-color: var(--green-accent);
+      border-radius: 50%;
+    }
+
+    .intro-box {
+      background: #f8fafc;
+      border-left: 4px solid var(--green-primary);
+      padding: 16px 20px;
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+      font-size: 1.05rem;
+      color: #334155;
+    }
+
+    .map-container {
+      text-align: center;
+      background: #fafafa;
+      padding: 16px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-color);
+    }
+
+    .map-img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    /* APA 7 References */
+    .apa-references {
+      list-style: none;
+    }
+
+    .apa-references li {
+      padding-left: 36px;
+      text-indent: -36px;
+      margin-bottom: 12px;
+      font-size: 0.95rem;
+      color: #475569;
+    }
+
+    .apa-references a {
+      color: #2563eb;
+      text-decoration: none;
+      word-break: break-all;
+    }
+
+    .apa-references a:hover {
+      text-decoration: underline;
+    }
+
+    /* Teacher Quote */
+    .teacher-quote {
+      background: #fffbe6;
+      border: 1px solid #ffe58f;
+      border-radius: var(--radius-md);
+      padding: 20px;
+      position: relative;
+    }
+
+    .teacher-quote p {
+      font-style: italic;
+      color: #595959;
+      font-size: 0.98rem;
+    }
+
+    .teacher-quote .author {
+      font-style: normal;
+      font-weight: 700;
+      color: #262626;
+      margin-top: 10px;
+      display: block;
+    }
+
+    /* SECCIÓN 3 STYLES */
+    .qr-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: #fafafa;
+      padding: 30px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-color);
+      margin-bottom: 32px;
+    }
+
+    .qr-img {
+      width: 240px;
+      height: 240px;
+      object-fit: contain;
+      border-radius: 12px;
+      box-shadow: var(--shadow-sm);
+      background: #ffffff;
+      padding: 12px;
+      border: 1px solid var(--border-color);
+      transition: transform 0.2s ease;
+    }
+
+    .qr-img:hover {
+      transform: scale(1.03);
+    }
+
+    .qr-subtitle {
+      margin-top: 16px;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--green-primary);
+      text-transform: capitalize;
+    }
+
+    .sec3-large-gallery-title {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--green-primary);
+      margin-bottom: 18px;
+      text-align: center;
+      letter-spacing: 0.5px;
+    }
+
+    .sec3-large-gallery {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .large-image-card {
+      background: #fafafa;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 16px;
+      text-align: center;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .large-img {
+      width: 100%;
+      height: auto;
+      max-height: 420px;
+      object-fit: contain;
+      border-radius: 8px;
+      background: #ffffff;
+      border: 1px solid var(--border-color);
+    }
+
+    /* SECCIÓN 4 VIDEO */
+    #seccion4 video {
+      width: 100%;
+      max-width: 100%;
+      border-radius: var(--radius-md);
+      display: block;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navegación y encabezado general -->
+  <header>
+    <div class="nav-container">
+      <a href="#seccion1" class="brand-logo">
+        <svg viewBox="0 0 100 100">
+          <circle cx="50" cy="50" r="45" fill="none" stroke="#2d5a27" stroke-width="4"/>
+          <circle cx="50" cy="50" r="41" fill="none" stroke="#2d5a27" stroke-width="2"/>
+          <path d="M 30,58 C 30,58 35,40 50,40 C 65,40 70,58 70,58" fill="none" stroke="#2d5a27" stroke-width="3"/>
+          <polygon points="50,22 42,38 58,38" fill="#4caf50"/>
+          <path d="M 20,68 Q 50,80 80,68" fill="none" stroke="#1976d2" stroke-width="4"/>
+        </svg>
+        <span>ECO ALERTA</span>
+      </a>
+
+      <div class="nav-members">
+        <span>Integrantes: Cristel, Maylin, Kryztal, Ximena, Iker</span>
+      </div>
+
+      <nav class="nav-links">
+        <a href="#seccion1">Sección 1</a>
+        <a href="#seccion2">Sección 2</a>
+        <a href="#seccion3">Sección 3</a>
+        <a href="#seccion4">Sección 4</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- SECCIÓN 1 -->
+    <section id="seccion1" class="section-card">
+      <span class="section-badge">Sección 1</span>
+
+      <!-- Contenedor flexible que alinea texto e imagen sin empalmarse -->
+      <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 30px; flex-wrap: wrap;">
+
+        <!-- Bloque de Texto (Toma todo el espacio restante disponible) -->
+        <div style="flex: 1; min-width: 280px;">
+          <h1 style="font-size: 2.2rem; color: var(--green-primary); line-height: 1.2; margin-bottom: 8px;">ECO ALERTA ZACACHIMALPA</h1>
+          <p class="motto">"Por un Zacachimalpa limpio"</p>
+
+          <div class="who-we-are" style="margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--border-color);">
+            <h3>¿Quiénes somos?</h3>
+            <p>Somos un grupo de estudiantes comprometidos con la concientización e investigación sobre los problemas ambientales que afectan a la comunidad de San Pedro Zacachimalpa, buscando informar y promover un entorno más sano para todos.</p>
+
+            <div class="members-list">
+              <span class="member-tag">Cristel</span>
+              <span class="member-tag">Maylin</span>
+              <span class="member-tag">Kryztal</span>
+              <span class="member-tag">Ximena</span>
+              <span class="member-tag">Iker</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bloque de la Imagen (Mantiene un tamaño mediano bien visible) -->
+        <div style="flex-shrink: 0; text-align: center; background: #fafafa; padding: 16px; border: 1px solid var(--border-color); border-radius: var(--radius-md);">
+          <img src="logo.png" alt="Logo Eco Alerta Zacachimalpa" style="width: 200px; height: auto; display: block; object-fit: contain;">
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECCIÓN 2 -->
+    <section id="seccion2" class="section-card">
+      <span class="section-badge">Sección 2</span>
+
+      <!-- Clasificación 1 -->
+      <div class="classification-block">
+        <div class="classification-title">1. Contexto del Problema</div>
+        <div class="intro-box">
+          En San Pedro Zacachimalpa, la quema clandestina e incontrolada de basura genera una densa nube de humo tóxico que contamina el aire y el suelo local. Esta práctica afecta gravemente la salud respiratoria de niños y adultos mayores, además de vulnerar el bienestar de los vecinos y agricultores de la zona periurbana.
+        </div>
+      </div>
+
+      <!-- Clasificación 2 -->
+      <div class="classification-block">
+        <div class="classification-title">2. Mapa Semántico</div>
+        <div class="map-container">
+          <img src="mapa.png" alt="Mapa semántico sobre la quema de basura en San Pedro Zacachimalpa" class="map-img">
+        </div>
+      </div>
+
+      <!-- Clasificación 3 -->
+      <div class="classification-block">
+        <div class="classification-title">3. Fuentes de Información (Formato APA 7)</div>
+        <ul class="apa-references">
+          <li>Ávila Camacho. (s. f.). [Actualización de estado]. Facebook. <a href="https://www.facebook.com/LaJornadadeOrientePuebla/posts/-vecinos-de-san-pedro-zacachimalpa-denunciaron-un-tiradero-de-cascajo-y-basura-a/1519183120238075/" target="_blank" rel="noopener">https://www.facebook.com/LaJornadadeOrientePuebla/posts/-vecinos-de-san-pedro-zacachimalpa-denunciaron-un-tiradero-de-cascajo-y-basura-a/1519183120238075/</a></li>
+          <li>Luna, R. A. (2024). <i>San Pedro Zacachimalpa se suma al cuidado del medio ambiente</i> [Video]. Facebook. <a href="https://www.facebook.com/RayAtanacioLuna/videos/san-pedro-zacachimalpa-se-suma-al-cuidado-del-medio-ambiente/1440927990270723/" target="_blank" rel="noopener">https://www.facebook.com/RayAtanacioLuna/videos/san-pedro-zacachimalpa-se-suma-al-cuidado-del-medio-ambiente/1440927990270723/</a></li>
+          <li>Secretaría de Medio Ambiente del Estado de Puebla. (2025, 14 de noviembre). <i>Riesgos de la quema de residuos y pastizales en zonas periurbanas de la capital</i>. Gobierno del Estado de Puebla. <a href="https://smadsot.puebla.gob.mx/comunicados/quema-residuos-aire" target="_blank" rel="noopener">https://smadsot.puebla.gob.mx/comunicados/quema-residuos-aire</a></li>
+        </ul>
+      </div>
+
+      <!-- Clasificación 4 -->
+      <div class="classification-block">
+        <div class="classification-title">4. Testimonio Docente</div>
+        <div class="teacher-quote">
+          <p>«Le preguntamos al profesor de Gestión de la Calidad "Leopoldito" si le incomodaba o molestaba la quema de basura en la zona, a lo que respondió que sí le afecta bastante. Mencionó que con frecuencia queman desechos o aveces solo pastizales cerca de las instalaciones del bachillerato y el humo entra directamente a los salones de clase. Esto resulta muy incómodo durante la clase, ya que la concentración del olor ha llegado a provocarle dolores de cabeza y mareos tanto a él como a los alumnos, o incluso incomidad por el olor.»</p>
+          <span class="author">— Profesor Leopoldo Perez Ojeda</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 3 -->
+    <section id="seccion3" class="section-card">
+      <span class="section-badge">Sección 3</span>
+
+      <!-- Contenedor del QR del Ensayo -->
+      <div class="qr-container">
+        <img src="qr.png" alt="Código QR del Ensayo" class="qr-img">
+        <h3 class="qr-subtitle">qr del ensayo</h3>
+      </div>
+
+      <!-- Galería de 3 Imágenes Grandes -->
+      <h4 class="sec3-large-gallery-title">ESCALETA</h4>
+      <div class="sec3-large-gallery">
+        <div class="large-image-card">
+          <img src="uno.png" alt="Imagen 1 - Evidencia de la problemática ambiental" class="large-img">
+          <p class="large-image-caption"></p>
+        </div>
+
+        <div class="large-image-card">
+          <img src="dos.png" alt="Imagen 2 - Impacto en San Pedro Zacachimalpa" class="large-img">
+          <p class="large-image-caption"></p>
+        </div>
+
+        <div class="large-image-card">
+          <img src="tres.png" alt="Imagen 3 - Consecuencias en el entorno" class="large-img">
+          <p class="large-image-caption"></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 4 -->
+    <section id="seccion4" class="section-card">
+      <span class="section-badge">Sección 4</span>
+      <video src="uno.mp4" controls></video>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>Eco Alerta Zacachimalpa</p>
+  </footer>
+
+</body>
+</html>
